@@ -1,0 +1,17 @@
+{
+    "contents" : "#loading images\n\nlibrary(png)\n\n\nland <- readPNG(source = \"start.png\",native = T,info =F)\nland_mask <- readPNG(source = \"start_mask.png\",native = T,info =F)\nchar <- readPNG(source = \"char.png\",native = T,info =F)\n\nxxxx <- land\n\n\n#Set up the plot area\nplot(1:58, type='n', main=\"\", xlab=\"\", ylab=\"\", axes=F)\n\n#Get the plot information so the image will fill the plot box, and draw it\nlim <- par()\nrasterImage(land, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4],interpolate = F)\nxxxx[27:31,27:36] <- char\nrasterImage(xxxx, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4],interpolate = F)\nxxxx <- land\n\ngrid(nx = 58,ny = 58)\n\n\nstr(char)\n\nif(land_mask[23:27,25:34]!=1) paste(\"You cannot go there!\")\n\n",
+    "created" : 1428668371415.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4059077300",
+    "id" : "D28B23B2",
+    "lastKnownWriteTime" : 1429223793,
+    "path" : "~/The R Game/R/load.images.R",
+    "project_path" : "R/load.images.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

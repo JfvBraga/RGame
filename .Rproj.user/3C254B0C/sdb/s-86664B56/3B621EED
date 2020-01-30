@@ -1,0 +1,17 @@
+{
+    "contents" : "library(png)\nrg2 <- function(){\n  \n  land <- readPNG(source = \"start.png\",native = T,info =F)\n  land_mask <- readPNG(source = \"start_mask.png\",native = T,info =F)\n  char <- readPNG(source = \"char.png\",native = T,info =F)\n  \n  rotate <- function(x) t(apply(x, 2, rev))\n  #custom images\n  #1 Knigth\n  knight <- c(0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,0,0,0,0,0,0,0,1,1,1,1,1,3,3,3,3,3,3,1,1,1,1,1,1\n              ,1,3,1,1,1,3,3,3,3,3,1,1,1,0,0,0,0,1,3,1,1,1,3,3,3,3,1,1,1,1,0,0,0,0,1,3,1,1,1,3,3,3,1,1,1,1,1,0,0,0,0,1,3,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0\n              ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,3,1,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,0,0,0)\n  knight <- matrix(knight,nrow = 17,ncol = 12)\n  \n  #Intro\n  readline(\"Welcome to Riel! (press enter to continue)\")\n  land_init <-matrix(sample(c(1,2,3),size = 30*30,replace = T),30,30)\n  #image(land_init, axes = F, col=c(\"green\",\"grey\", \"blue\"))\n  image(rotate(knight),col=c(\"white\",\"red\",\"yellow\",\"black\"),axes=F)\n  name <- readline(\"Name yourself! : \")\n\n  #starting position\n  x1 <- 27\n  y1 <- 27\n  x2 <- x1+4\n  y2 <- y1+9\n  \n  xxxx <- land\n  \n  xxxx[x1:x2,y1:y2] <- char\n\n  #Set up the plot area\n  plot(1:58, type='n', main=\"\", xlab=\"\", ylab=\"\", axes=F)\n  \n  #Get the plot information so the image will fill the plot box, and draw it\n  lim <- par()\n  rasterImage(xxxx, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4],interpolate = F)\n\n  print(paste(name,\",you just woke up and you do not have any idea of how you got here.\",name,\",you better keep moving, there are monsters on these lands!\"))\n  run <-1\n  while(run== 1){\n    xxxx <- land \n    \n    xx <- readline(\"Do you want to move left (-1), rigth (1) or none (0) ?\")\n    yy <- readline(\"Do you want to move UP (1), DOWN (-1) or none (0) ?\")\n\n    xx <- as.numeric(unlist(strsplit(xx, \",\")))\n    yy <- as.numeric(unlist(strsplit(yy, \",\")))\n    if(length(xx)==0) xx <- 0\n    if(length(yy)==0) yy <- 0\n    \n    yy <- yy*-1\n    \n    \n        \n    x1 <- x1+xx\n    y1 <- y1+yy\n    x2 <- x1+4\n    y2 <- y1+9\n    \n    xxxx[x1:x2,y1:y2] <- char\n    rasterImage(xxxx, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4],interpolate = F)\n  }\n}\n\n\n# ♥\n# ♡",
+    "created" : 1429216550965.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3059036702",
+    "id" : "3B621EED",
+    "lastKnownWriteTime" : 1429223789,
+    "path" : "~/The R Game/R/rg2.R",
+    "project_path" : "R/rg2.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

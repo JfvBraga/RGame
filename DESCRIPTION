@@ -1,0 +1,9 @@
+Package: The R Game
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2015-03-16
+Author: Reivex
+Maintainer: Nope
+Description: Conquer
+License: Just run it! Do not share!

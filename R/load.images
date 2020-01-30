@@ -1,0 +1,9 @@
+#loading images
+
+xxxx <- readPNG(source = "mew.png",native = T,info =F)
+
+
+  image(xxxx, xaxs = "i", yaxs = "i", col=c("white","red","blue","green","red"))
+
+
+unique(xxxx)
